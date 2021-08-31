@@ -1,18 +1,40 @@
-Theme Configuration Plug-In for Pelican
-=======================================
+Theme Configuration: A Plug-In for Pelican
+==========================================
+
+[![Build Status](https://img.shields.io/github/workflow/status/pelican-plugins/theme-config/build)](https://github.com/pelican-plugins/theme-config/actions) [![PyPI Version](https://img.shields.io/pypi/v/pelican-theme-config)](https://pypi.org/project/pelican-theme-config/)
 
 This package provides a plug-in for the Pelican static website generator and
-allows the selected theme to adjust Pelican's configuration using the
-'themeconf.py' file located in the root directory of the theme.
+adds support for themes to adjust Pelican's configuration using the
+`themeconf.py` file located in the root directory of the theme.
 
-This allows theme authors create more self-contained themes since everything
-that theme requires can be configured within the theme itself:
+Installation
+------------
 
-  * themes can be shipped with their own plugins
+This plug-in can be installed via:
+
+    python -m pip install pelican-theme-config
+
+Usage
+-----
+
+Add `theme_config` to the list of plug-ins in the `pelicanconf.py` file, e.g.
+
+    PLUGINS = [ 'theme_config' ]
+
+From that point on, Pelican will try to load the `themeconf.py` from theme's
+directory.
+
+Overview
+--------
+
+This plug-in allows theme authors to create more self-contained themes since
+everything that a theme requires can be configured within the theme itself:
+
+  * themes can be shipped with their own plug-ins
   * themes can provide their static content (e.g. a theme that implements
     Google's PWA can provide `manifest.json` that should be put into the
     root of the website)
-  * basically, authors could do almost anything :) since with this plugin
+  * basically, authors could do almost anything :) since with this plug-in
     theme gets control
 
 The code is hooked up early in Pelican's start-up sequence leveraging the
@@ -42,7 +64,7 @@ This list can be configured by the end user in `pelicanconf.py` if they want
 to restrict it even further or make it more relaxed.  The goal is to give the
 user the ability to define the expected behaviour for their configuration.
 
-The plug-in introduce the following configuration options one can specify in
+The plug-in introduces the following configuration options one can specify in
 the primary Pelican configuration file:
 
     # The name of the file to lookup in theme's directory
@@ -51,12 +73,20 @@ the primary Pelican configuration file:
     # The list of configuration options to be protected from modification
     THEME_CONFIG_PROTECTED = ['PATH','OUTPUT_PATH']
 
-Usage
------
+Contributing
+------------
 
-Add `theme_config` to the list of plugins in the `pelicanconf.py` file, e.g.
+Contributions are welcome and much appreciated. Every little bit helps. You can
+contribute by improving the documentation, adding missing features, and fixing
+bugs. You can also help out by reviewing and commenting on [existing issues][].
 
-    PLUGINS = [ 'theme_config' ]
+To start contributing to this plug-in, review the [Contributing to Pelican][]
+documentation, beginning with the **Contributing Code** section.
 
-From that point on, Pelican will try to load the `themeconf.py` from theme's
-directory.
+Credits
+-------
+
+Authored by [Dmitry Khlebnikov](https://dmitry.khlebnikov.net/).
+
+[existing issues]: https://github.com/pelican-plugins/simple-footnotes/issues
+[Contributing to Pelican]: https://docs.getpelican.com/en/latest/contribute.html
